@@ -15,7 +15,8 @@ import {
     FaYoutube,
     FaBlogger,
     FaInstagram,
-    FaStackOverflow
+    FaStackOverflow, 
+    FaBehanceSquare
 } from 'react-icons/fa';
 
 function Landing() {
@@ -139,6 +140,19 @@ function Landing() {
                                     className='landing--social'
                                     style={{ color: theme.secondary }}
                                     aria-label='Instagram'
+                                />
+                            </a>
+                        )}
+                        {socialsData.behance && (
+                            <a
+                                href={socialsData.behance}
+                                target='_blank'
+                                rel='noreferrer'
+                            >
+                                <FaBehanceSquare 
+                                    className='landing--social'
+                                    style={{ color: theme.secondary }}
+                                    aria-label='Behance'
                                 />
                             </a>
                         )}

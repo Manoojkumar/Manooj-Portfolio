@@ -16,6 +16,7 @@ import {
     FaInstagram,
     FaGitlab,
     FaMediumM,
+    FaBehanceSquare
 } from 'react-icons/fa';
 import { AiOutlineSend, AiOutlineCheckCircle } from 'react-icons/ai';
 import { FiPhone, FiAtSign } from 'react-icons/fi';
@@ -337,16 +338,7 @@ function Contacts() {
                         </div>
 
                         <div className='socialmedia-icons'>
-                            {/* {socialsData.twitter && (
-                                <a
-                                    href={socialsData.twitter}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className={classes.socialIcon}
-                                >
-                                    <FaTwitter aria-label='Twitter' />
-                                </a>
-                            )} */}
+                            
                             {socialsData.github && (
                                 <a
                                     href={socialsData.github}
@@ -425,6 +417,26 @@ function Contacts() {
                                     className={classes.socialIcon}
                                 >
                                     <FaStackOverflow aria-label='Stack Overflow' />
+                                </a>
+                            )}
+                            {socialsData.stackOverflow && (
+                                <a
+                                    href={socialsData.behance}
+                                    target='_blank'
+                                    rel='noreferrer'
+                                    className={classes.socialIcon}
+                                >
+                                    <FaBehanceSquare aria-label='Behance' />
+                                </a>
+                            )}
+                            {socialsData.twitter && (
+                                <a
+                                    href={socialsData.twitter}
+                                    target='_blank'
+                                    rel='noreferrer'
+                                    className={classes.socialIcon}
+                                >
+                                    <FaTwitter aria-label='Twitter' />
                                 </a>
                             )}
                             {/* {socialsData.codepen && (

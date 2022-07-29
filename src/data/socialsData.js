@@ -10,5 +10,6 @@ export const socialsData = {
     medium: 'https://medium.com/@',
     stackOverflow: 'https://stackoverflow.com/users/11016649/code-cry',
     gitlab: 'https://gitlab.com/',
-    youtube: 'https://youtube.com/'
+    youtube: 'https://youtube.com/',
+    behance: 'https://www.behance.net/manooj'
 }

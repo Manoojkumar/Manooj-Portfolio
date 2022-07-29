@@ -23,6 +23,7 @@ function About() {
                         {aboutData.description1}<br/><br/>
                         {aboutData.description2}<br></br>
                         {aboutData.description3}<br></br>
+                        <p>Check out my Behance Profile<a style={{color: theme.primary}} href="https://www.behance.net/manooj" target="_blank"> <u>Behance-Manooj</u></a></p><br></br>
                         
 
                     </p>
