@@ -72,6 +72,9 @@ import picsart from '../assets/svg/skills/picsart.svg'
 import sketch from '../assets/svg/skills/sketch.svg'
 import unity from '../assets/svg/skills/unity.svg'
 import wolframalpha from '../assets/svg/skills/wolframalpha.svg'
+import arkit from '../assets/svg/skills/arkit.png'
+
+import coreml from '../assets/svg/skills/coreml.png'
 
 import canva from '../assets/svg/skills/canva.svg'
 
@@ -79,6 +82,10 @@ import canva from '../assets/svg/skills/canva.svg'
 export const skillsImage = (skill) => {
     const skillID = skill.toLowerCase();
     switch (skillID) {
+        case 'core ml':
+            return coreml;
+        case 'arkit':
+            return arkit;
         case 'gcp':
             return gcp;
         case 'html':

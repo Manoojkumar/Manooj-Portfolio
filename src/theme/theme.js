@@ -217,7 +217,7 @@ export const orangeThemeDark = {
     tertiary70: '#eaeaeab3',
     tertiary50: '#eaeaea80',
     aboutimg1: orangeThemeboy,
-    aboutimg2: orangeThemegirl,
+    aboutimg2: orangeThemeboy,
     eduimg: eduOrange,
     expimg: expOrange,
     contactsimg: contactsOrange

@@ -25,7 +25,10 @@ import { ThemeContext } from '../../contexts/ThemeContext';
 
 import { socialsData } from '../../data/socialsData';
 import { contactsData } from '../../data/contactsData';
+import { headerData } from '../../data/headerData';
 import './Contacts.css';
+import emailjs from 'emailjs-com';
+
 
 function Contacts() {
     const [open, setOpen] = useState(false);
@@ -36,7 +39,6 @@ function Contacts() {
 
     const [success, setSuccess] = useState(false);
     const [errMsg, setErrMsg] = useState('');
-
     const { theme } = useContext(ThemeContext);
 
     const handleClose = (event, reason) => {
@@ -129,6 +131,12 @@ function Contacts() {
 
     const classes = useStyles();
 
+    const sendEmail = (e) => {
+        e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
+    
+        
+      }
+
     const handleContactForm = (e) => {
         e.preventDefault();
 
@@ -139,22 +147,37 @@ function Contacts() {
                     email: email,
                     message: message,
                 };
+                
+            emailjs.send('service_a4r9adv', 'template_j10rddc', responseData, 'VJIBZO5SRRaAVWGOY')
+            .then((result) => {
+                setSuccess(true);
+                setErrMsg('');
+                setName('');
+                setEmail('');
+                setMessage('');
+                setOpen(false);
+                alert("Message Sent Successfully..")
+             }, (error) => {
+                setErrMsg(error.text);
+                setOpen(true);
+             });
 
-                axios.post(contactsData.sheetAPI, responseData).then((res) => {
-                    console.log('success');
-                    setSuccess(true);
-                    setErrMsg('');
+                // axios.post(contactsData.sheetAPI, responseData).then((res) => {
+                //     console.log('success');
+                //     setSuccess(true);
+                //     setErrMsg('');
 
-                    setName('');
-                    setEmail('');
-                    setMessage('');
-                    setOpen(false);
-                });
+                //     setName('');
+                //     setEmail('');
+                //     setMessage('');
+                //     setOpen(false);
+                // });
             } else {
                 setErrMsg('Invalid email');
                 setOpen(true);
             }
         } else {
+           
             setErrMsg('Enter all the fields');
             setOpen(true);
         }
@@ -172,37 +195,37 @@ function Contacts() {
                     <div className='contacts-form'>
                         <form onSubmit={handleContactForm}>
                             <div className='input-container'>
-                                <label htmlFor='Name' className={classes.label}>
+                                <label for='name' className={classes.label}>
                                     Name
                                 </label>
                                 <input
-                                    placeholder='John Doe'
+                                    placeholder={headerData.name}
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     type='text'
                                     name='Name'
                                     className={`form-input ${classes.input}`}
+                                    id="name"
                                 />
                             </div>
                             <div className='input-container'>
-                                <label
-                                    htmlFor='Email'
+                                <label for='email'
                                     className={classes.label}
                                 >
                                     Email
                                 </label>
                                 <input
-                                    placeholder='John@doe.com'
+                                    placeholder={contactsData.email}
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     type='email'
                                     name='Email'
                                     className={`form-input ${classes.input}`}
+                                    id="email"
                                 />
                             </div>
                             <div className='input-container'>
-                                <label
-                                    htmlFor='Message'
+                                <label for='message'
                                     className={classes.label}
                                 >
                                     Message
@@ -214,6 +237,7 @@ function Contacts() {
                                     type='text'
                                     name='Message'
                                     className={`form-message ${classes.message}`}
+                                    id="message"
                                 />
                             </div>
 
@@ -313,7 +337,7 @@ function Contacts() {
                         </div>
 
                         <div className='socialmedia-icons'>
-                            {socialsData.twitter && (
+                            {/* {socialsData.twitter && (
                                 <a
                                     href={socialsData.twitter}
                                     target='_blank'
@@ -322,7 +346,7 @@ function Contacts() {
                                 >
                                     <FaTwitter aria-label='Twitter' />
                                 </a>
-                            )}
+                            )} */}
                             {socialsData.github && (
                                 <a
                                     href={socialsData.github}
@@ -353,7 +377,7 @@ function Contacts() {
                                     <FaInstagram aria-label='Instagram' />
                                 </a>
                             )}
-                            {socialsData.medium && (
+                            {/* {socialsData.medium && (
                                 <a
                                     href={socialsData.medium}
                                     target='_blank'
@@ -362,8 +386,8 @@ function Contacts() {
                                 >
                                     <FaMediumM aria-label='Medium' />
                                 </a>
-                            )}
-                            {socialsData.blogger && (
+                            )} */}
+                            {/* {socialsData.blogger && (
                                 <a
                                     href={socialsData.blogger}
                                     target='_blank'
@@ -372,8 +396,8 @@ function Contacts() {
                                 >
                                     <FaBloggerB aria-label='Blogger' />
                                 </a>
-                            )}
-                            {socialsData.youtube && (
+                            )} */}
+                            {/* {socialsData.youtube && (
                                 <a
                                     href={socialsData.youtube}
                                     target='_blank'
@@ -382,8 +406,8 @@ function Contacts() {
                                 >
                                     <FaYoutube aria-label='YouTube' />
                                 </a>
-                            )}
-                            {socialsData.reddit && (
+                            )} */}
+                            {/* {socialsData.reddit && (
                                 <a
                                     href={socialsData.reddit}
                                     target='_blank'
@@ -392,7 +416,7 @@ function Contacts() {
                                 >
                                     <FaRedditAlien aria-label='Reddit' />
                                 </a>
-                            )}
+                            )} */}
                             {socialsData.stackOverflow && (
                                 <a
                                     href={socialsData.stackOverflow}
@@ -403,7 +427,7 @@ function Contacts() {
                                     <FaStackOverflow aria-label='Stack Overflow' />
                                 </a>
                             )}
-                            {socialsData.codepen && (
+                            {/* {socialsData.codepen && (
                                 <a
                                     href={socialsData.codepen}
                                     target='_blank'
@@ -412,8 +436,8 @@ function Contacts() {
                                 >
                                     <FaCodepen aria-label='CodePen' />
                                 </a>
-                            )}
-                            {socialsData.gitlab && (
+                            )} */}
+                            {/* {socialsData.gitlab && (
                                 <a
                                     href={socialsData.gitlab}
                                     target='_blank'
@@ -422,7 +446,7 @@ function Contacts() {
                                 >
                                     <FaGitlab aria-label='GitLab' />
                                 </a>
-                            )}
+                            )} */}
                         </div>
                     </div>
                 </div>

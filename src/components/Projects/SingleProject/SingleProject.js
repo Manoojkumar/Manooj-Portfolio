@@ -49,7 +49,9 @@ function SingleProject({ id, name, desc, tags, code, demo, image, theme }) {
                         {name}
                     </h2>
                     <img src={image ? image : placeholder} alt={name} />
+                    
                     <div className='project--showcaseBtn'>
+                    {demo != "" &&
                         <a
                             href={demo}
                             target='_blank'
@@ -61,14 +63,17 @@ function SingleProject({ id, name, desc, tags, code, demo, image, theme }) {
                                 .replace(' ', '-')
                                 .toLowerCase()}-demo`}
                         >
+                            
                             <FaPlay
                                 id={`${name
                                     .replace(' ', '-')
                                     .toLowerCase()}-demo`}
                                 className={classes.icon}
                                 aria-label='Demo'
-                            />
+                            /> 
+                                
                         </a>
+                        }
                         <a
                             href={code}
                             target='_blank'
