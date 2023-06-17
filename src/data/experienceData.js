@@ -21,13 +21,6 @@ export const experienceData = [
         endYear: '2020'
     },
     
-    {
-        id: 4,
-        company: 'Aroliant Internet Pvt. Ltd',
-        jobtitle: 'iOS Developer',
-        startYear: '2017',
-        endYear: '2019'
-    }
    
     
 ]
